@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax</title>
+</head>
+<body>
+    <script>
+        // 封装ajax函数
+        function ajax(method, URL, data, callbacks, flag){
+            //ajax对象
+            var xhr = null;
+            if(window.XMLHttpRequest){
+                xhr = new XMLHttpRequest;
+            }else{
+                xhr = new ActiveXObject;
+            }
+            //初始化HTTP请求参数（请求方式，地址，同步异步）
+            //发送请求
+            method = method.toUppercase();
+            if(method == "GET"){
+                var date = new Date();
+                var timer = date.getTime();
+                xhr.open('GET', URL + '?' + data + "&timer" + timer, flag);
+                xhr.send();
+            }else if(method == "POST"){
+                xhr.open("POST", URL, flag)
+                xhr.setRequestHeader('content-type',"application/x-www-form-urlencoded");
+                xhr.send(data);
+            }
+            //监控状态变化
+            xhr.onreadchange = function(){
+                if(xhr.readstate == 4 && xhr.tatus == 200){
+                    callbacks(xhr.responseText);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
