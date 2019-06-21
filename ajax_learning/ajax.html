@@ -15,24 +15,24 @@
             if(window.XMLHttpRequest){
                 xhr = new XMLHttpRequest;
             }else{
-                xhr = new ActiveXObject;
+                xhr = new ActiveXObject('Microsoft.XMLHttp');
             }
             //初始化HTTP请求参数（请求方式，地址，同步异步）
             //发送请求
-            method = method.toUppercase();
+            method = method.toUpperCase();
             if(method == "GET"){
                 var date = new Date();
                 var timer = date.getTime();
-                xhr.open('GET', URL + '?' + data + "&timer" + timer, flag);
+                xhr.open('GET', URL + '?' + data + "&timer=" + timer, flag);
                 xhr.send();
             }else if(method == "POST"){
                 xhr.open("POST", URL, flag)
-                xhr.setRequestHeader('content-type',"application/x-www-form-urlencoded");
+                xhr.setRequestHeader('Content-Type',"application/x-www-form-urlencoded");
                 xhr.send(data);
             }
             //监控状态变化
-            xhr.onreadchange = function(){
-                if(xhr.readstate == 4 && xhr.tatus == 200){
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200){
                     callbacks(xhr.responseText);
                 }
             }
