@@ -1,0 +1,22 @@
+@charset "UTF-8";
+.class {
+  color: red;
+}
+.class .box {
+  width: 100px;
+}
+
+.container {
+  width: 300px;
+  margin: 0 auto;
+  color: red;
+}
+
+/*
+ * 我是注释 编译成css能看到
+ */
+div {
+  background: red;
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,50 @@
+@mixin theme($primary-color, $rotato : 120deg, $darken : 20%){
+    $btn-secondary : adjust-hue($primary-color,$rotato);
+    $btn-other : adjust-hue($primary-color,-$rotato);
+    $btn-other2 : adjust-hue($primary-color, 180deg);
+    .btn-primary{
+        @include btn-base($primary-color,$darken);
+    }
+    .btn-secondary{
+        @include btn-base($btn-secondary,$darken);
+    }
+    .btn-other{
+        @include btn-base($btn-other,$darken);
+    }
+    .btn-other2{
+        @include btn-base($btn-other2,$darken);
+    }
+}
+@mixin btn-base($bg,$darken){
+    background: $bg;
+    border-color: darken($bg,$darken);
+    &:hover{
+        background: saturate($bg, 40%);
+    }
+    @if lightness($bg) > 60% {
+        color: black;
+    }
+}
+
+.btn{
+    padding: 2px 10px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: #fff;
+    &:hover:not(:disabled){
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    &:disabled{
+        color: rgb(233, 227, 227);
+        opacity: .5;
+    }
+}
+.theme-1{
+    @include theme(#983824, 30deg, 50%);
+}
+.theme-2{
+    @include theme(#88dfee, 235deg, 70%);
+}
+.theme-3{
+    @include theme(white,$darken : 30%);
+}

@@ -1,0 +1,6 @@
+@mixin btn-all($color : red,$bgcolor : white) {
+    color: $color;
+    background: $bgcolor;
+    font-size: 18;
+    @content;
+ }

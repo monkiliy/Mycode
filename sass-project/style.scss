@@ -1,0 +1,92 @@
+/* mixin用法
+    1.解决代码复用，mixin代码块，include引入
+    2.mixin 参数
+    3.参数的默认值
+    4.键值对指定传参
+    5.null
+ */
+ $all-color : #e0e0e0;
+ @import './btn';
+.btn{
+    @include btn-all(null);
+    position: relative;
+}
+.btn-a{
+    @include btn-all($bgcolor : #ff6700){
+        border-radius: 3px;
+        width: 100px;
+    };
+    position: absolute;
+}
+.btn-b{
+    @include btn-all($bgcolor : $all-color);
+    position: relative;
+    .container &{
+        width: 2000px;
+        height: 100px;
+    }
+}
+.btn-c{
+    color: red;
+}
+@mixin size($num){
+    @if $num > 20px{
+        font-size: 25px;
+    }
+    @else{
+        font-size: 14px;
+    }
+}
+p{
+    @include size(10px);
+}
+// 字符串插值
+$name : 'color';
+.#{$name}{
+    color : $name;
+}
+
+// @for 循环
+@for $i from 1 through 5{
+    h#{$i}{
+        font-size: 5rem - $i*0.5rem;
+    }
+}
+
+// @each in 
+$myList : 10px 0 20px 3px;
+.go{
+    @each $i in $myList{
+        /* #{$i} */
+    }
+}
+$Lists : (to top right, blue , red),(to bottom left, yellow, green);
+.foo{
+    background: linear-gradient(nth($Lists,2));
+    // color: nth(nth($lists,2),1);
+}
+$maps : (darks:#008,light:#e0e);
+.class{
+    color: map-get($maps, darks );
+}
+$directions : (
+    't' : 'top',
+    'b' : 'bottom',
+    'l' : 'left',
+    'r' : 'right'
+);
+$dimensions : (
+    'm' : 'margin',
+    'p' : 'padding'
+);
+
+@each $dim in $dimensions{
+    @each $dir in $directions{
+        @for $i from 1 through 5{
+            $size : $i * 5;
+            #{nth($dim,1)}-#{nth($dir,1)}-#{$size}{
+                #{nth($dim,2)}-#{nth($dir,2)} : #{$size}px;
+            }
+        }
+    }
+}

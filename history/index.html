@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>history</title>
+</head>
+<body>
+    <p>I am index;</p>
+    <button class="btn">添加</button>
+    <button class="btn1">替换</button>
+    <script>
+        var obtn = document.getElementsByClassName('btn')[0];
+        obtn.onclick = function(){
+            history.pushState({name: 'cc'}, '', 'demo.html');//pushState replacestate不会刷新页面
+        }
+        var obtn1 = document.getElementsByClassName('btn1')[0];
+        obtn1.onclick = function(){
+            history.replaceState({name: 'amiee'},'', 'demo1.html');
+        }
+        window.onpopstate = function(e){
+            console.log('a');
+            console.log(e.state)
+        }
+    </script>
+</body>
+</html>

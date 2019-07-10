@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cookie</title>
+    <style>
+        body, div{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            font-size: 20px;
+            line-height: 100px;
+            text-align: center;
+            color: #fff;
+            background: #ff6700;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">cookie</div>
+    <script>
+        var obox = document.getElementsByClassName('box')[0];
+        obox.onmousedown = function(){
+            console.log('a');
+            document.onmousemove = function(e){
+                var mx = e.clientX;
+                var my = e.clientY;
+                console.log(mx,my);
+                obox.style.left = mx + 'px';
+                obox.style.top = my + 'px';
+                document.onmouseup = function(e){
+                    document.onmousemove = null;
+                    var x = e.clientX;
+                    var y = e.clientY;
+                    document.cookie = `x=${x}`;
+                    document.cookie = `y=${y}`;
+                    document.cookie = 'max-age=1000';
+                }
+            }
+        }
+        var str = document.cookie;
+        console.log(str);
+        var item = str.split('; ');
+        item.forEach(function(value){
+            var arr = value.split('=');
+            if(arr[0] == 'x'){
+                obox.style.left = arr[0]+'px';
+            }
+            if(arr[0] == 'y'){
+                obox.style.top = arr[0]+'px';
+            }
+        })
+        var manageCookie = {
+            setCookie: function(key,value,date){
+                if(typeof date == 'number'){
+                    document.cookie = `${key}=${value}; max-age=${date}`;
+                }else if(Object.prototype.toString.call(date) == '[object Date]'){
+                    document.cookie = `${key}=${value}; expires=${date}`;
+                }
+                return this;
+            },
+            removeCookie: function(){
+                var date = new Date();
+                date = date - 1;
+                document.cookie = `expires=${date}`;
+                return this;
+            },
+            fideCookie: function(search,callbacks){
+                if(typeof search != 'String'){
+                    search.toString();
+                }
+                var str = document.cookie;
+                var arr = str.split('; ');
+                arr.forEach(function(value){
+                    var item = value.split('=');
+                    if(item[0] == search){
+                        callbacks?callbacks(item[1]):'';
+                    }
+                })
+                return this;
+            }
+        }
+    </script>
+</body>
+</html>

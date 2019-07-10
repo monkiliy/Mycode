@@ -1,0 +1,15 @@
+@import './layout';
+$error-color : #ccc !default;
+.container{
+    width: 300px;
+    margin: 0 auto;
+    color: $error-color;
+    $bg : #eee;
+}
+/*
+ * 我是注释 编译成css能看到
+ */
+ // 我也是注释编译成css 看不到
+div{
+    background: $error-color;//$bg; 局部变量全局访问不到
+}
