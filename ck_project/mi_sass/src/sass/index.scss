@@ -1,0 +1,69 @@
+@import './layout';
+@import './variables';
+
+/* 初始化 */
+body, div, header, p, span, ul, li{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 1000px;
+    font: 14px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    background-color: #fff;
+    min-width: 1226px;
+}
+a{text-decoration: none}
+li{list-style: none}
+
+// header
+.topbar{
+    height: 40px;
+    font-size: 12px;
+    color: $header-font-color;
+    background: #333;
+    .container{
+        @include center;
+        &::after{
+            @include clearfix;
+        }
+        /* topbar导航 */
+        .topbar-nav{
+            @include header-text(left);
+        }
+         /* topbar-cart */
+        .topbar-cart{
+            @include header-text(right){
+                font-size: 12px;
+                color: $header-font-color;
+                margin-left: -4px;
+            };
+            width: 120px;
+            margin-left: 15px;
+            a{
+                display: block;
+                height: 40px;
+                line-height: 40px;
+                background: #424242;
+                text-align: center;
+                .iconfont{
+                    font-size: 14px;
+                    margin-right: 2px;
+                }
+            }
+        }
+        /* topbar-info */
+        .topbar-info{
+            @include header-text(right);
+            a{
+                padding: 0 5px;
+            }
+            .sep{
+                margin: 0;
+            }
+            .info{
+                padding: 0 10px;
+            }
+        }
+    }
+}
+

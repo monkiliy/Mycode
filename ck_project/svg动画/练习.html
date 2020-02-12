@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>svg</title>
+    <style>
+        svg{
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="0" font-size="25" stroke="#ff6700">蝉壳学院
+            <!-- <animate attributeName = "x" form = "0" to = "400" begin = "0s" dur = "2s"></animate>
+            <animate attributeName = "y" form = "450" to = "100" begin = "0s" dur = "1s"></animate> -->
+            <animateMotion path = 'M 0 500 C 100 450, 300 400, 400 100' rotate="auto" begin="0s" dur = '2s' repeatCount='indefinite'></animateMotion>
+            </text>
+    </svg>
+</body>
+</html>

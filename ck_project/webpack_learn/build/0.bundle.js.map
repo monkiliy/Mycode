@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/footer.js"],"names":["__webpack_require__","r","__webpack_exports__","d","num","str"],"mappings":"yFAAAA,EAAAC,EAAAC,GAAAF,EAAAG,EAAAD,EAAA,wBAAAE,IAAAJ,EAAAG,EAAAD,EAAA,wBAAAG,IAAA,IAAMD,EAAM,GACNC,EAAM","file":"0.bundle.js","sourcesContent":["const num = 12;\r\nconst str = 'liujianghua';\r\nexport {num, str};"],"sourceRoot":""}
