@@ -1,0 +1,459 @@
+body , div ,ul , li , a , h2 ，p{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+body {
+    height: 3000px;
+}
+.top {
+    width: 1920px;
+    height: 40px;
+    background-color: #333;
+}
+.container {
+    width: 1226px;
+    height: 40px;
+    margin: 0 auto;
+    
+}
+.container::after , .search::after {
+    display: table;
+    content: "";
+    clear: both;
+}
+ul {
+    height: 40px;
+
+}
+span {
+    padding: 0;
+    margin: 0 3px;
+    font-size: 12px;
+    color: #424242;
+}
+.container li {
+    display: inline-block;
+    line-height: 40px;
+    font-size: 12px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+a {
+    color: #b0b0b0;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+    width: 120px;
+    height: 40px;
+}
+.right li {
+    margin: 0 25px;
+}
+.middle {
+    float: right;
+    margin: 0 20px;
+    padding: 0 10px;
+    
+}
+/*第二部分*/
+.search {
+    width: 1226px;
+    height: 100px;
+    margin: 0 auto;
+    /* border: 1px solid black; */
+}
+.search .logo {
+    position: relative;
+    float: left;
+    width: 55px;
+    height: 55px;
+    margin: 22px 10px 0 0 ;
+    background-color: #ff6700;
+    /* background-position: 50% 50%; */
+}
+.logo img {
+    position: absolute;
+    top: 3px;
+    right: 0;
+}
+.item {
+    float: left;
+}
+.item ul {
+    width: 850px;
+    height: 100px;
+}
+.left-block {
+    margin: 0 10px 0 152px;
+}
+.item li {
+    display: inline-block;
+    padding: 40px 10px 38px;
+    font-size: 1em;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+/* .item .nothing {
+    width: 142px ;
+    height: 100px;
+    margin: 0 30px;
+} */
+.search-box  {
+    position: relative;
+    float: right;
+}
+.item a {
+    color: #333;
+}
+.search-box {
+    width: 300px;
+    padding: 25px 0 0 10px;
+}
+.search-text {
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    z-index: 1 ;
+    width: 223px;
+    height: 48px;
+    margin: 0 5px 0 10px;
+    border: 1px solid #e0e0e0;
+}
+.search-submit {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+
+}
+.search-inbox a{
+    display: inline-block;
+    font-size: 12px;
+    color: #757575;
+    background-color: #eee;
+}
+.search-inbox {
+    position: absolute;
+    top: 38px;
+    right: 70px;
+    z-index: 9;
+}
+/* 第三部分 */
+.goods {
+    position: relative;
+    width: 1226px;
+    height: 460px;
+    margin: 0 auto;
+}
+.contents {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 234px;
+    height: 460px;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* border: 2px solid black; */
+}
+.contents ul {
+    width: 234px;
+    height: 420px;
+    padding: 20px 0;
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+.contents li {
+    /* position: relative; */
+    width: 204px;
+    height: 42px;
+    padding: 0 0 0 30px;
+}
+.contents a {
+    /* position: absolute; */
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    color: #fff;
+}
+.showImg img {
+    width: 1226px;
+    height: 460px;
+}
+/* 第四部分 */
+.goodsImg {
+    width: 1226px;
+    height: 170px;
+    margin: 14px auto 0;
+}
+.goodsItem , .imgSmall {
+    float: left;
+}
+.goodsImg::after {
+    display: table;
+    content: "";
+    clear: both;
+}
+.goodsItem {
+    width: 234px;
+    height: 170px;
+    background-color: #5f5750;
+}
+.goodsItem li {
+    float: left;
+    width: 76px;
+    height: 82px;
+    margin: 1px;
+    
+}
+.goodsItem li a {
+    display: block;
+    width: 76px;
+    height: 82px;
+    line-height: 82px;
+    text-align: center;
+    font-size: 12px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    color: #fff;
+}
+.goodsImg .imgSmall {
+    width: 316px;
+    height: 170px;
+    margin-left: 14px;
+}
+
+.goodsImg .imgSmall img {
+    width: 316px;
+    height: 170px;
+}
+/* 中间图片 */
+.centerImg {
+    width: 1226px;
+    height: 120px;
+    margin: 20px auto 42px;
+}
+.centerImg img {
+    width: 1226px;
+    height: 120px;
+}
+/* 商品详细 */
+.home-main {
+    width: 100%;
+    height: 3000px;
+    border-top: 1px solid white;  
+    background-color: #f5f5f5;
+}
+/*手机*/
+.mobilePhone {
+    position: relative;
+    width: 1226px;
+    height: 686px;
+    margin: 22px auto 15px;
+}
+.Phone-top h2{
+    /* position: relative; */
+    width: 1226px;
+    height: 58px;
+    margin: 0;
+    line-height: 58px;
+    font-size: 22px;
+    font-weight: 200;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+.Phone-top {
+    position: relative;
+}
+.Phone-top div {
+    position: absolute;
+    top: 18px;
+    right: 0;
+    /* float: right; */
+}
+.Phone-img img {
+    width: 234px;
+    height: 614px;
+    
+}
+.Phone-goods-img {
+    position: absolute;
+    top: 58px;
+    right: 0px;
+    width: 992px;
+    height: 614px;
+}
+.Phone-goods-img li {
+    position: relative;
+    float: left;
+    width: 234px;
+    height: 300px;
+    margin: 0 0 14px 14px;
+    padding: 20px 0;
+    background-color: #fff;
+    box-sizing: border-box;
+
+}
+.Phone-goods-img:after {
+    display: table;
+    content: "";
+    clear: both;
+}
+.Phone-goods-img li img{
+    /* position: absolute;
+    top: 0px;
+    left: 37px; */
+    width: 160px;
+    height: 160px;
+    margin: 10px 37px 0; 
+}
+.PhoneName {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+.PhoneIfm {
+    margin: 10px;
+    font-size: 12px;
+    text-align: center;
+    color: #b0b0b0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.price {
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    text-align: center;
+    color: #ff6700;
+}
+.price del {
+    color: #b0b0b0;
+}
+.New {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-34px);
+    width: 64px;
+    height: 20px;
+    background: #83c44e;
+    text-align: center;
+    font-size: 12px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    color: #fff;
+}
+.New1 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-34px);
+    width: 64px;
+    height: 20px;
+    background: #e53935;
+    text-align: center;
+    font-size: 12px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    color: #fff;
+}
+/* 智能家电 */
+.AI {
+    width: 1226px;
+    height: 800px;
+    margin: 0 auto;
+}
+.firstImg {
+    width: 1226px;
+    height: 120px;
+    margin: 30px auto;
+}
+.firstImg img {
+    width: 1226px;
+    height: 120px;
+}
+.nav {
+    position: relative;
+    width: 1226px;
+    height: 58px;
+    margin:  0;
+}
+.nav h2 {
+    width: 1226px;
+    height: 58px;
+    margin: 0;
+    line-height: 58px;
+    font-size: 22px;
+    font-weight: 200;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+.nav ul {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 326px;
+    height: 58px;
+}
+.nav  li {
+    float: left;
+    height: 58px;
+    margin-left: 30px;
+    font-size: 16px;
+    line-height: 58px;
+    text-align: center;
+}
+.nav::after {
+    display: table;
+    content: "";
+    clear: both;
+}
+.AI-goods {
+    position: relative;
+    width: 1226px;
+    height: 614px;
+}
+.AI-bigimg{
+    width: 234px;
+    height: 614px;
+}
+.AI-bigimg img {
+    width: 234px;
+    height: 300px;
+    margin-bottom: 14px;
+}
+.AI-smallimg{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 992px;
+    height: 614px;
+}
+.AI-smallimg img {
+    width: 160px;
+    height: 160px;
+}
+.AI-smallimg li {
+    display: inline-block;
+    width: 234px;
+    height: 300px;
+    background-color: #fff;
+}
+.AI-smallimg .last {
+    width: 234px;
+    height: 143px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

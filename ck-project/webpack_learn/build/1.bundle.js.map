@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/buttonColor/green.js"],"names":["__webpack_require__","r","__webpack_exports__"],"mappings":"wFAAAA,EAAAC,EAAAC,GAAeA,EAAA","file":"1.bundle.js","sourcesContent":["export default 'color:green';\r\n"],"sourceRoot":""}

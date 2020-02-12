@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>game</title>
+    <style>
+        body, div, img, p{
+            margin: 0;
+            padding: 0;
+        }
+        .scene{
+            position: relative;
+            width: 750;
+            height: 550;
+        }
+        .hammer{
+            position: absolute;
+            z-index: 999;
+            margin-top: -40px;
+            margin-left: -40px;
+            top: 0;
+            left: 0;
+            cursor: none;
+            user-select: none;
+        }
+        div[class ^= hollow] > img {
+            position: absolute;
+            top: 102px;
+            left: 0;
+        }
+        div[class ^= hollow]{
+            position: absolute;
+            width: 102px;
+            height: 103px;
+            overflow: hidden;
+            /* border: 1px solid black; */
+        } 
+        .hollow1{
+            top: 150px;
+            left: 140px;
+        }
+        .hollow2{
+            top: 150px;
+            left: 330px;
+        }
+        .hollow3{
+            top: 160px;
+            left: 527px;
+        }
+        .hollow4{
+            top: 240px;
+            left: 115px;
+        }
+        .hollow5{
+            top: 240px;
+            left: 334px;
+        }
+        .hollow6{
+            top: 240px;
+            left: 532px;
+        }
+        .hollow7{
+            top: 335px;
+            left: 110px;
+        }
+        .hollow8{
+            top: 345px;
+            left: 333px;
+        }
+        .hollow9{
+            top: 345px;
+            left: 550px;
+        }
+        .score{
+            position: absolute;
+            width: 115px;
+            height: 21px;
+            top: 194px;
+            left: 229px;
+            font-size: 21px;
+            line-height: 21px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        .count-down{
+            position: absolute;
+            width: 115px;
+            height: 21px;
+            top: 194px;
+            left: 483px;
+            font-size: 21px;
+            line-height: 21px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        .seting{
+            position: absolute;
+            top: 70px;
+            left: 800px;
+            width: 260px;
+            height: 400px;
+            background: linear-gradient(to bottom right ,#f97794, #623AA2);
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        .seting div:not(#start){
+            width: 200px;
+            height: 40px;
+            margin: 30px auto ;
+            text-align: center;
+            font-size: 35px;
+            /* word-spacing: 30px; */
+            line-height: 40px;
+            font-family: "微软雅黑";
+            color: rgba(255, 255, 255, 0.3);
+            border: 2px solid #5CDFD1;
+            border-radius: 20px;
+        }
+        #start{
+            width: 200px;
+            height: 40px;
+            margin: 35px auto;
+            border: 2px solid #D296F4;
+            text-align: center;
+            font-size: 35px;
+            font-family: sans-serif;
+            letter-spacing: 3px;
+            line-height: 40px;
+            color: #5CDFD1;
+            border-radius: 20px;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <img src="./打地鼠/bg.png" alt="bg">
+        <div class="hollow1"><img src="./打地鼠/mouse1.png" alt=""></div>
+        <div class="hollow2"><img src="./打地鼠/mouse1.png" alt=""></div>
+        <div class="hollow3"><img src="./打地鼠/mouse1.png" alt=""></div>
+        <div class="hollow4"><img src="./打地鼠/mouse1.png" alt=""></div>
+        <div class="hollow5"><img src="./打地鼠/mouse1.png" alt=""></div>
+        <div class="hollow6"><img src="./打地鼠/mouse1.png" alt=""></div>
+        <div class="hollow7"><img src="./打地鼠/mouse1.png" alt=""></div>
+        <div class="hollow8"><img src="./打地鼠/mouse1.png" alt=""></div>
+        <div class="hollow9"><img src="./打地鼠/mouse1.png" alt=""></div>
+        <img class="hammer" src="./打地鼠/hammer1.png" alt="">
+    </div>
+    <div class="score"><p>0</p></div>
+    <div class="count-down">60秒</div>
+    <div class="seting">
+        <div id="easy">初&nbsp;&nbsp;级</div>
+        <div id="middle">中&nbsp;&nbsp;级</div>
+        <div id="hard">高&nbsp;&nbsp;级</div>
+        <div id="impossible">魔&nbsp;&nbsp;鬼</div>
+        <div id="start">start</div>
+    </div>
+    <script>
+        /*
+        *解决多次点击bug
+        *解决点击图片立刻消失
+        */
+        var hammer = document.getElementsByClassName("hammer")[0];
+        // var hollow1 = document.getElementsByClassName("hollow1")[0];
+        var scene = document.getElementsByClassName("scene")[0];
+        // var mouse = hollow[changeMouse].getElementsByTagName("img")[0];
+        var DOMscore = document.getElementsByClassName("score")[0];
+        var DOMcountDown = document.getElementsByClassName("count-down")[0];
+        var easy = document.getElementById("easy");
+        var middle = document.getElementById("middle");
+        var hard = document.getElementById("hard");
+        var impossible = document.getElementById("impossible");
+        var loopTime = 50;
+        var nowTop = 102;
+        var endTop = 0;
+        var Time = 0;//控制地鼠消失时间
+        var score = 0;
+        var show = null;
+        var bug = true;
+        //随机出现地鼠
+        var hollowAry = [];
+        var mouseAry = [];
+        var mouseID = 0;
+        //选择等级
+        easy.onclick = function(){
+            loopTime = 50;
+            easy.style.background = "#ff6700";
+            middle.style.background = "";
+            hard.style.background = "";
+            impossible.style.background = "";
+        }
+        middle.onclick = function(){
+            loopTime = 40;
+            middle.style.background = "#ff6700";
+            hard.style.background = "";
+            impossible.style.background = "";
+            easy.style.background = "";
+        }
+        hard.onclick = function(){
+            loopTime = 30;
+            hard.style.background = "#ff6700";
+            easy.style.background = "";
+            middle.style.background = "";
+            impossible.style.background = "";
+        }
+        impossible.onclick = function(){
+            loopTime = 20;
+            impossible.style.background = "#ff6700";
+            easy.style.background = "";
+            middle.style.background = "";
+            hard.style.background = "";
+        }
+        //开始游戏
+        start.onclick = function(){
+            score = 0;
+            DOMscore.innerHTML = score;
+            var startGame = setInterval(function(){
+            mouseID = parseInt(Math.random()*9);
+            nowTop = 102;
+            Time = 0;
+            show = setInterval(imgShow, loopTime);
+            mouseAry[mouseID].src = "./打地鼠/mouse1.png"
+        }, 1500);
+        //倒计时
+        var maxTime = new Date().getTime() + 60000;
+        var showTime = setInterval(function(){
+        var countDown = parseInt((maxTime - new Date().getTime()) / 1000 % 60);
+            console.log("时间：" + loopTime);
+            DOMcountDown.innerHTML = countDown;
+            if(countDown === 0){
+                clearInterval(showTime);
+                clearInterval(startGame);
+            }
+            // console.log(countDown);
+        }, 200);
+        }
+        for(var i = 0; i < 9; i++){
+            hollowAry[i] = document.getElementsByClassName("hollow" + (i + 1))[0];
+            mouseAry[i] = hollowAry[i].getElementsByTagName("img")[0];
+        }
+        //改变锤子的状态
+        hammer.onmousedown = function(){
+            hammer.src = "./打地鼠/hammer2.png";
+            console.log('a');
+        }
+        hammer.onmouseup = function(){
+            hammer.src = "./打地鼠/hammer1.png";
+            console.log('b');
+        }
+        //锤子移动
+        scene.onmousemove = function(e){
+            // console.log(e.clientX, e.clientY);
+            var x = e.clientX;
+            var y = e.clientY;
+            if(x < 750 && y < 550){
+                hammer.style.top = y + "px";
+                hammer.style.left = x + "px";
+            }
+        }
+        //地鼠冒出与消失
+        // var show = setInterval(imgShow, loopTime);
+        function imgShow(){
+            Time += loopTime;
+            if(nowTop > endTop){
+                nowTop -= 5;
+            }else{
+                nowTop = 0;
+                // clearInterval(show);
+                // console.log(Time);
+            }
+            // console.log("s");
+            mouseAry[mouseID].style.top = nowTop + "px";
+            if(Time > 1300){
+                // console.log("消失");
+                mouseAry[mouseID].style.top = 102 + "px";
+                bug = true;
+                clearInterval(show);
+            }
+        }   
+        //鼠标点击 击中地鼠
+        scene.onclick = function(e){
+            var y = e.clientY;
+            var x = e.clientX;
+            var x1 = mouseAry[mouseID].offsetLeft + hollowAry[mouseID].offsetLeft;
+            var x2 = x1 + mouseAry[mouseID].offsetWidth;
+            var y1 = mouseAry[mouseID].offsetTop + hollowAry[mouseID].offsetTop;
+            var y2 = y1 + mouseAry[mouseID].offsetHeight;
+            if(x > x1 && x < x2 && y > y1 && y < y2 && bug == true){   
+                mouseAry[mouseID].src = "./打地鼠/mouse2.png";           
+                bug = false;
+                score++;
+                DOMscore.innerHTML = score;
+                //点击到图片后立即消失
+                // var fast = setTimeout(function(){
+                //     mouseAry[mouseID].style.top = 102 + "px";
+                //     clearInterval(show);
+                // }, 50)
+                // clearTimeout(fast);
+            }
+        }
+    </script>
+</body>
+</html>
